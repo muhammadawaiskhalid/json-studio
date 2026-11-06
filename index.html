@@ -1,0 +1,271 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#101217">
+
+    <meta name="description" content="JSON Studio — a fast, privacy-friendly JSON formatter, validator and minifier for developers.">
+
+    <title>JSON Studio — Developer Toolkit</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="assets/js/app.js" defer></script>
+</head>
+
+<body>
+
+    <div class="app-shell">
+
+        <!-- Sidebar -->
+        <aside class="sidebar" aria-label="Application navigation">
+
+            <a class="brand" href="index.html" aria-label="JSON Studio home">
+                <span class="brand-mark" aria-hidden="true">{ }</span>
+                <span class="brand-name">JSON<span>STUDIO</span></span>
+            </a>
+
+            <div class="sidebar-label">WORKSPACE</div>
+
+            <nav class="sidebar-nav" aria-label="Tools">
+                <a href="#workspace" class="nav-link active" aria-current="page">
+                    <span class="nav-icon" aria-hidden="true">{ }</span>
+                    <span>JSON Editor</span>
+                    <span class="nav-active-dot" aria-hidden="true"></span>
+                </a>
+            </nav>
+
+            <div class="sidebar-bottom">
+                <div class="privacy-note">
+                    <span class="privacy-dot" aria-hidden="true"></span>
+                    <div>
+                        <strong>Local processing</strong>
+                        <p>Your JSON stays in your browser.</p>
+                    </div>
+                </div>
+
+                <div class="sidebar-footer">
+                    <span>JSON STUDIO / V1.0</span>
+                    <a href="https://github.com/muhammadawaiskhalid" target="_blank" rel="noopener noreferrer">
+                        GITHUB ↗
+                    </a>
+                </div>
+            </div>
+
+        </aside>
+
+        <!-- Main application -->
+        <main class="main-content" id="workspace">
+
+            <header class="topbar">
+                <div class="breadcrumb">
+                    <span>TOOLS</span>
+                    <span class="breadcrumb-separator">/</span>
+                    <strong>JSON EDITOR</strong>
+                </div>
+
+                <div class="topbar-right">
+                    <span class="topbar-status">
+                        <span class="status-dot" aria-hidden="true"></span>
+                        READY TO WORK
+                    </span>
+                    <span class="topbar-version">V1.0</span>
+                </div>
+            </header>
+
+            <div class="workspace-content">
+
+                <!-- Intro -->
+                <section class="page-heading" aria-labelledby="page-title">
+                    <div class="eyebrow">
+                        <span class="eyebrow-line" aria-hidden="true"></span>
+                        DEVELOPER UTILITY / 001
+                    </div>
+
+                    <div class="heading-row">
+                        <div>
+                            <h1 id="page-title">JSON <span>Studio.</span></h1>
+                            <p>Format, validate, and transform your JSON. Fast, clean, and entirely in your browser.</p>
+                        </div>
+
+                        <div class="heading-decoration" aria-hidden="true">
+                            <span>{</span>
+                            <span>}</span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Toolbar -->
+                <section class="toolbar" aria-label="JSON actions">
+
+                    <div class="toolbar-primary">
+                        <button type="button" class="btn btn-primary" id="formatBtn">
+                            <span aria-hidden="true">✦</span>
+                            Format JSON
+                        </button>
+
+                        <button type="button" class="btn btn-secondary" id="minifyBtn">
+                            Minify
+                        </button>
+
+                        <button type="button" class="btn btn-secondary" id="validateBtn">
+                            Validate
+                        </button>
+                    </div>
+
+                    <div class="toolbar-secondary">
+                        <button type="button" class="btn btn-text" id="sampleBtn">
+                            Load sample
+                        </button>
+
+                        <button type="button" class="btn btn-text btn-danger" id="clearBtn">
+                            Clear all
+                        </button>
+                    </div>
+
+                </section>
+
+                <!-- Editor -->
+                <section class="editor-layout" aria-label="JSON editor">
+
+                    <!-- Input panel -->
+                    <div class="editor-panel">
+                        <div class="panel-header">
+                            <div class="panel-title">
+                                <span class="panel-indicator input-indicator" aria-hidden="true"></span>
+                                <h2>INPUT</h2>
+                                <span class="panel-filetype">JSON</span>
+                            </div>
+
+                            <button type="button" class="panel-action" id="pasteBtn">
+                                Paste
+                            </button>
+                        </div>
+
+                        <div class="editor-body">
+                            <div class="line-numbers" id="inputLines" aria-hidden="true">1</div>
+
+                            <textarea
+                                id="jsonInput"
+                                class="code-editor"
+                                aria-label="JSON input"
+                                placeholder='{
+  "name": "Your project",
+  "version": "1.0.0"
+}'
+                                spellcheck="false"
+                                autocapitalize="off"
+                                autocomplete="off"
+                                autocorrect="off"
+                                wrap="off"
+                            ></textarea>
+                        </div>
+
+                        <div class="panel-footer">
+                            <span id="inputStats">0 CHARACTERS · 0 LINES</span>
+                            <span>UTF-8</span>
+                        </div>
+                    </div>
+
+                    <!-- Output panel -->
+                    <div class="editor-panel output-panel">
+                        <div class="panel-header">
+                            <div class="panel-title">
+                                <span class="panel-indicator output-indicator" aria-hidden="true"></span>
+                                <h2>OUTPUT</h2>
+                                <span class="panel-filetype">RESULT</span>
+                            </div>
+
+                            <button type="button" class="panel-action" id="copyBtn">
+                                Copy
+                            </button>
+                        </div>
+
+                        <div class="editor-body">
+                            <div class="line-numbers" id="outputLines" aria-hidden="true">1</div>
+
+                            <textarea
+                                id="jsonOutput"
+                                class="code-editor output-editor"
+                                aria-label="JSON output"
+                                placeholder="Your processed JSON will appear here..."
+                                spellcheck="false"
+                                wrap="off"
+                                readonly
+                            ></textarea>
+                        </div>
+
+                        <div class="panel-footer">
+                            <span id="outputStats">0 CHARACTERS · 0 LINES</span>
+
+                            <button type="button" class="footer-action" id="downloadBtn">
+                                DOWNLOAD .JSON ↗
+                            </button>
+                        </div>
+                    </div>
+
+                </section>
+
+                <!-- Feedback -->
+                <div class="feedback-bar" id="feedbackBar" role="status" aria-live="polite">
+                    <div class="feedback-left">
+                        <span class="feedback-icon" id="feedbackIcon" aria-hidden="true">✓</span>
+                        <span id="feedbackMessage">Ready. Paste your JSON or load a sample to begin.</span>
+                    </div>
+
+                    <span class="feedback-shortcut">CTRL + ENTER TO FORMAT</span>
+                </div>
+
+                <!-- Features -->
+                <section class="features-section" aria-labelledby="features-title">
+
+                    <div class="section-heading">
+                        <span class="section-index">/ 01</span>
+                        <h2 id="features-title">Built for the details.</h2>
+                    </div>
+
+                    <div class="feature-grid">
+
+                        <article class="feature-card">
+                            <span class="feature-number">01 / FORMAT</span>
+                            <div class="feature-symbol" aria-hidden="true">{ }</div>
+                            <h3>Make it readable.</h3>
+                            <p>Turn messy JSON into structured, indented code that's easy to inspect.</p>
+                        </article>
+
+                        <article class="feature-card">
+                            <span class="feature-number">02 / VALIDATE</span>
+                            <div class="feature-symbol" aria-hidden="true">✓</div>
+                            <h3>Catch the errors.</h3>
+                            <p>Check JSON syntax and get useful feedback when something isn't right.</p>
+                        </article>
+
+                        <article class="feature-card">
+                            <span class="feature-number">03 / MINIFY</span>
+                            <div class="feature-symbol" aria-hidden="true">↘</div>
+                            <h3>Keep it compact.</h3>
+                            <p>Remove unnecessary whitespace and prepare JSON for efficient transfer.</p>
+                        </article>
+
+                    </div>
+                </section>
+
+                <!-- Footer -->
+                <footer class="app-footer">
+                    <p>DESIGNED & BUILT BY <strong>MUHAMMAD AWAIS KHALID</strong></p>
+                    <span>PRECISION IN EVERY BRACKET. © 2026</span>
+                </footer>
+
+            </div>
+
+        </main>
+
+    </div>
+
+</body>
+</html>
